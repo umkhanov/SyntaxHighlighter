@@ -1,13 +1,14 @@
 # Real-Time Grammar-Based Syntax Highlighter Projesi Dokümantasyonu
 
-## Projeyi Çalıştırma Talimatı ve Demo Video
+## Projeyi Çalıştırma Talimatı
 Projeyi test etmek için SyntaxHighlighterGUI.java dosyasını çalıştırın!
 
 <pre>bash
 javac *.java
-java SyntaxHighlighterGUI</pre>
+java SyntaxHighlighterGUI</pre> 
+## <br>Demo Video
+Demo Video linki : https://youtu.be/92CO8lLTZLs <br><br>
 
-Demo Video: https://youtu.be/92CO8lLTZLs <br><br>
 
 ## 1. Programlama Dili ve Gramer Seçimi
 
@@ -36,14 +37,14 @@ Expression → Term [Operator Term]*
 Term → IDENTIFIER | NUMBER | ( Expression )
 ```
 
-## 2. Sözdizimi Analizi Süreci
+## <br>2. Sözdizimi Analizi Süreci
 
 Sözdizimi analizi iki aşamada gerçekleşir:
 
 1. **Leksikal Analiz:** Kaynak kodu tokenlara böler
 2. **Sözdizimsel Analiz:** Tokenları gramer kurallarına göre analiz eder
 
-## 3. Leksikal Analiz Detayları
+## <br>3. Leksikal Analiz Detayları
 
 ### Seçilen Yöntem: 
 State Diagram & Program Implementation
@@ -68,7 +69,7 @@ State Diagram & Program Implementation
 3. Her bulunan lexeme için tip belirle
 4. Token listesi oluştur
 
-## 4. Ayrıştırma (Parsing) Metodolojisi
+## <br>4. Ayrıştırma (Parsing) Metodolojisi
 
 ### Seçilen Yöntem: 
 Top-Down Parser (Yukarıdan Aşağıya)
@@ -89,7 +90,7 @@ Top-Down Parser (Yukarıdan Aşağıya)
 - `parseExpression()`: Matematiksel ifadeleri işler
 - `parseBlock()`: Blok yapılarını kontrol eder
 
-## 5. Vurgulama Şeması
+## <br>5. Vurgulama Şeması
 
 ### Vurgulama Stratejisi:
 - Her token tipi için farklı renk ve stil
@@ -110,7 +111,7 @@ Top-Down Parser (Yukarıdan Aşağıya)
 3. StyledDocument ile renklendirme uygula
 4. Cursor pozisyonunu koru
 
-## 6. GUI Implementasyonu
+## <br>6. GUI Implementasyonu
 
 ### Kullanılan Teknoloji: 
 Java Swing
@@ -132,7 +133,7 @@ Java Swing
 - Özyineleme kontrolü
 - Timer ile fazla güncelleme engelleme
 
-## 7. Gerçek Zamanlı Fonksiyonalite
+## <br>7. Gerçek Zamanlı Fonksiyonalite
 
 ### Çalışma Prensibi:
 1. Kullanıcı yazdığında DocumentListener devreye girer
