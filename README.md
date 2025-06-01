@@ -1,5 +1,14 @@
 # Real-Time Grammar-Based Syntax Highlighter Projesi Dokümantasyonu
 
+## Projeyi Çalıştırma Talimatı ve Demo Video
+Projeyi test etmek için SyntaxHighlighterGUI.java dosyasını çalıştırın!
+
+<pre>bash
+javac *.java
+java SyntaxHighlighterGUI</pre>
+
+Demo Video: https://youtu.be/92CO8lLTZLs <br><br>
+
 ## 1. Programlama Dili ve Gramer Seçimi
 
 ### Seçilen Dil: 
