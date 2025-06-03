@@ -49,11 +49,6 @@ Sözdizimi analizi iki aşamada gerçekleşir:
 ### Seçilen Yöntem: 
 State Diagram & Program Implementation
 
-### Neden Bu Yöntem:
-- Regex kullanarak basit ve etkili
-- Programlı kontrol ile esnek token tipleri
-- Öğrenci seviyesi için anlaşılır
-
 ### Token Tipleri:
 - **KEYWORD:** Anahtar kelimeler
 - **IDENTIFIER:** Değişken isimleri
@@ -73,11 +68,6 @@ State Diagram & Program Implementation
 
 ### Seçilen Yöntem: 
 Top-Down Parser (Yukarıdan Aşağıya)
-
-### Neden Top-Down:
-- Gramer yapısını doğal olarak takip eder
-- Recursive descent parsing ile basit implementasyon
-- Sol-faktorizasyon gerektirmez
 
 ### Parser Özellikleri:
 - Recursive descent parser
@@ -122,31 +112,19 @@ Java Swing
 - **DocumentListener:** Gerçek zamanlı güncelleme
 - **Timer:** Performans optimizasyonu
 
-### Özellikler:
-- Gerçek zamanlı sözdizimi vurgulama
-- Kaydırma çubuğu desteği
-- Durum çubuğu
-- Örnek kod yükleme
-
-### Performans Optimizasyonları:
-- 100ms gecikme ile vurgulama
-- Özyineleme kontrolü
-- Timer ile fazla güncelleme engelleme
-
 ## <br>7. Gerçek Zamanlı Fonksiyonalite
 
 ### Çalışma Prensibi:
 1. Kullanıcı yazdığında DocumentListener devreye girer
-2. Timer 100ms bekler (çok sık güncellemeyi önler)
-3. Metin tokenize edilir ve ayrıştırılır
-4. Vurgulama güncellenir
-5. Cursor pozisyonu korunur
+2. Metin tokenize edilir ve ayrıştırılır
+3. Vurgulama güncellenir
+4. Cursor pozisyonu korunur
 
 ### Teknik Detaylar:
 - SwingUtilities ile thread safety
 - Exception handling ile hata yönetimi
-- Memory-based storage (localStorage yok)
+- Memory-based storage
 
 ## Sonuç
 
-Bu proje, basit ama etkili bir sözdizimi vurgulayıcı oluşturur. Top-down parsing ve regex-based lexical analysis kullanarak, gerçek zamanlı C-benzeri kod vurgulama sağlar. Java Swing ile kullanıcı dostu bir arayüz sunar.
+Bu proje bir sözdizimi vurgulayıcı oluşturur. Top-down parsing ve regex-based lexical analysis kullanarak, gerçek zamanlı C-benzeri kod vurgulama sağlar. Java Swing ile kullanıcı dostu bir arayüz sunar.
