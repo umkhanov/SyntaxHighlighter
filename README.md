@@ -1,28 +1,38 @@
-# Real-Time Grammar-Based Syntax Highlighter Projesi Dokümantasyonu
+# Real-Time Grammar-Based Syntax Highlighter
 
-## Projeyi Çalıştırma Talimatı
-Projeyi test etmek için SyntaxHighlighterGUI.java dosyasını çalıştırın!
+Gerçek zamanlı sözdizimi vurgulayıcı - C benzeri programlama dili için geliştirilmiş GUI tabanlı syntax highlighter.
 
-<pre>bash
+## Başlangıç
+
+### Projeyi Çalıştırma
+```bash
 javac *.java
-java SyntaxHighlighterGUI</pre> 
-## <br>Demo Video
-Demo Video linki : https://youtu.be/92CO8lLTZLs <br><br>
+java SyntaxHighlighterGUI
+```
 
+### Sistem Gereksinimleri
+- Java 8 veya üzeri
+- Swing GUI desteği
 
-## 1. Programlama Dili ve Gramer Seçimi
+## Proje Yapısı
 
-### Seçilen Dil: 
-Basitleştirilmiş C benzeri programlama dili
+| Dosya | Açıklama |
+|-------|----------|
+| `Lexer.java`  Leksikal analiz motoru - metni token'lara böler |
+| `Parser.java` | Top-down parser - grammar kurallarını kontrol eder |
+| `Token.java` | Token veri yapısı |
+| `TokenType.java` | Token türleri enum'u |
+| `SyntaxHighlighterGUI.java` | Ana GUI uygulaması |
 
-### Gramer Özellikleri:
-- Anahtar kelimeler: `int`, `if`, `else`, `while`, `return`
-- Değişken tanımlama ve atama
-- Aritmetik ifadeler
-- Kontrol yapıları (if-else, while döngüsü)
-- Blok yapıları (`{` `}`)
+## Özellikler
 
-### Gramer Kuralları:
+- **Gerçek zamanlı vurgulama**: Yazdığınız anda sözdizimi renklendirme
+- **7 token türü desteği**: Anahtar kelime, tanımlayıcı, sayı, operatör, sembol, boşluk, bilinmeyen
+- **C benzeri dil grammar'ı**: int, if, else, while, return anahtar kelimeleri
+- **Top-down parsing**: LL(1) grammar yapısı
+- **Kullanıcı dostu arayüz**: Swing tabanlı modern GUI
+
+## Desteklenen Grammar
 
 ```
 Program → StatementList
@@ -37,94 +47,48 @@ Expression → Term [Operator Term]*
 Term → IDENTIFIER | NUMBER | ( Expression )
 ```
 
-## <br>2. Sözdizimi Analizi Süreci
+## Token Türleri ve Renkleri
 
-Sözdizimi analizi iki aşamada gerçekleşir:
+- **KEYWORD** - Mavi: `int`, `if`, `else`, `while`, `return`
+- **IDENTIFIER** - Siyah: Değişken isimleri
+- **NUMBER** - Mor: Sayısal değerler
+- **OPERATOR** - Kırmızı: `=`, `+`, `-`, `*`, `/`, `>`, `<`, `==`, vb.
+- **SYMBOL** - Koyu gri: `{`, `}`, `(`, `)`, `;`
+- **UNKNOWN** - Açık gri: Tanınmayan karakterler
 
-1. **Leksikal Analiz:** Kaynak kodu tokenlara böler
-2. **Sözdizimsel Analiz:** Tokenları gramer kurallarına göre analiz eder
+## Demo ve Dokümantasyon
 
-## <br>3. Leksikal Analiz Detayları
+- **[Demo Video](https://youtu.be/92CO8lLTZLs)** - Uygulamanın çalışır halini izleyin
+- **[Teknik Makale](YOUR_MEDIUM_LINK_HERE)** - Detaylı implementasyon açıklamaları
 
-### Seçilen Yöntem: 
-State Diagram & Program Implementation
+## Teknik Detaylar
 
-### Token Tipleri:
-- **KEYWORD:** Anahtar kelimeler
-- **IDENTIFIER:** Değişken isimleri
-- **NUMBER:** Sayılar
-- **OPERATOR:** İşleçler (`+`, `-`, `=`, `<`, `>` vb.)
-- **SYMBOL:** Semboller (`{`, `}`, `;`, `(`, `)` vb.)
-- **WHITESPACE:** Boşluklar
-- **UNKNOWN:** Tanınmayan karakterler
+### Leksikal Analiz
+- **Yöntem**: State Diagram & Program Implementation
+- **Teknoloji**: Java Regex Pattern Matching
+- **Algoritma**: Finite State Automaton
 
-### Çalışma Prensibi:
-1. Regex pattern ile tüm token tiplerini tanımla
-2. Matcher ile metni tara
-3. Her bulunan lexeme için tip belirle
-4. Token listesi oluştur
+### Parser
+- **Yöntem**: Top-Down (Recursive Descent)
+- **Tip**: LL(1) Grammar
+- **Özellik**: Backtracking ile hata kurtarma
 
-## <br>4. Ayrıştırma (Parsing) Metodolojisi
+### GUI
+- **Framework**: Java Swing
+- **Bileşenler**: JTextPane, StyledDocument, DocumentListener
+- **Performans**: Timer tabanlı güncelleme optimizasyonu
 
-### Seçilen Yöntem: 
-Top-Down Parser (Yukarıdan Aşağıya)
+## Örnek Kullanım
 
-### Parser Özellikleri:
-- Recursive descent parser
-- Backtracking ile hata kurtarma
-- LL(1) gramer yapısı
+```c
+int sayi = 42;
+if (sayi > 10) {
+    sayi = sayi * 2;
+    while (sayi < 100) {
+        sayi = sayi + 5;
+    }
+}
+return sayi;
+```
 
-### Ana Fonksiyonlar:
-- `parseProgram()`: Ana program yapısını ayrıştırır
-- `parseStatement()`: İfade tiplerini belirler
-- `parseExpression()`: Matematiksel ifadeleri işler
-- `parseBlock()`: Blok yapılarını kontrol eder
-
-## <br>5. Vurgulama Şeması
-
-### Vurgulama Stratejisi:
-- Her token tipi için farklı renk ve stil
-- Gerçek zamanlı güncelleme
-- Swing StyledDocument kullanımı
-
-### Renk Şeması:
-- **KEYWORD:** Mavi, kalın
-- **IDENTIFIER:** Siyah, normal
-- **NUMBER:** Mor, normal
-- **OPERATOR:** Kırmızı, kalın
-- **SYMBOL:** Koyu gri, normal
-- **UNKNOWN:** Gri, normal
-
-### Vurgulama Algoritması:
-1. Metin değişikliğinde tokenize et
-2. Her token için pozisyon hesapla
-3. StyledDocument ile renklendirme uygula
-4. Cursor pozisyonunu koru
-
-## <br>6. GUI Implementasyonu
-
-### Kullanılan Teknoloji: 
-Java Swing
-
-### Ana Bileşenler:
-- **JTextPane:** Kod editörü
-- **StyledDocument:** Metin stillemesi
-- **DocumentListener:** Gerçek zamanlı güncelleme
-- **Timer:** Performans optimizasyonu
-
-## <br>7. Gerçek Zamanlı Fonksiyonalite
-
-### Çalışma Prensibi:
-1. Kullanıcı yazdığında DocumentListener devreye girer
-2. Metin tokenize edilir ve ayrıştırılır
-3. Vurgulama güncellenir
-4. Cursor pozisyonu korunur
-
-### Teknik Detaylar:
-- SwingUtilities ile thread safety
-- Exception handling ile hata yönetimi
-- Memory-based storage
-
-## Sonuç
-
-Bu proje bir sözdizimi vurgulayıcı oluşturur. Top-down parsing ve regex-based lexical analysis kullanarak, gerçek zamanlı C-benzeri kod vurgulama sağlar. Java Swing ile kullanıcı dostu bir arayüz sunar.
+*Bu proje, compiler design prensiplerini kullanarak geliştirilmiş eğitim amaçlı bir syntax highlighter'dır.*
