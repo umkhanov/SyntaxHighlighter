@@ -5,6 +5,7 @@ Gerçek zamanlı sözdizimi vurgulayıcı - C benzeri programlama dili için gel
 ## Başlangıç
 
 ### Projeyi Çalıştırma
+
 ```bash
 javac *.java
 java SyntaxHighlighterGUI
@@ -18,7 +19,7 @@ java SyntaxHighlighterGUI
 
 | Dosya | Açıklama |
 |-------|----------|
-| `Lexer.java`  Leksikal analiz motoru - metni token'lara böler |
+| `Lexer.java` | Leksikal analiz motoru - metni token'lara böler |
 | `Parser.java` | Top-down parser - grammar kurallarını kontrol eder |
 | `Token.java` | Token veri yapısı |
 | `TokenType.java` | Token türleri enum'u |
@@ -44,7 +45,8 @@ If → if ( Expression ) Block [else Block]
 While → while ( Expression ) Block
 Block → { StatementList }
 Expression → Term [Operator Term]*
-Term → IDENTIFIER | NUMBER | ( Expression )
+Term → Factor
+Factor → IDENTIFIER | NUMBER | ( Expression )
 ```
 
 ## Token Türleri ve Renkleri
@@ -52,14 +54,14 @@ Term → IDENTIFIER | NUMBER | ( Expression )
 - **KEYWORD** - Mavi: `int`, `if`, `else`, `while`, `return`
 - **IDENTIFIER** - Siyah: Değişken isimleri
 - **NUMBER** - Mor: Sayısal değerler
-- **OPERATOR** - Kırmızı: `=`, `+`, `-`, `*`, `/`, `>`, `<`, `==`, vb.
+- **OPERATOR** - Kırmızı: `=`, `+`, `-`, `*`, `/`, `>`, `<`, `==`, `!=`, `<=`, `>=`
 - **SYMBOL** - Koyu gri: `{`, `}`, `(`, `)`, `;`
-- **UNKNOWN** - Açık gri: Tanınmayan karakterler
+- **UNKNOWN** - Gri: Tanınmayan karakterler
 
 ## Demo ve Dokümantasyon
 
-- **[Demo Video](https://youtu.be/92CO8lLTZLs)** - Uygulamanın çalışır halini izleyin
-- **[Teknik Makale](YOUR_MEDIUM_LINK_HERE)** - Detaylı implementasyon açıklamaları
+- **Demo Video** - [Uygulamanın çalışır halini izleyin](https://youtu.be/92CO8lLTZLs)
+- **Teknik Makale** - [Detaylı implementasyon açıklamaları](https://medium.com/@umhanov04/ger%C3%A7ek-zamanl%C4%B1-grammar-tabanl%C4%B1-syntax-highlighter-geli%C5%9Ftirme-s%C3%BCreci-aa4c2a301d6b)
 
 ## Teknik Detaylar
 
@@ -76,7 +78,7 @@ Term → IDENTIFIER | NUMBER | ( Expression )
 ### GUI
 - **Framework**: Java Swing
 - **Bileşenler**: JTextPane, StyledDocument, DocumentListener
-- **Performans**: Timer tabanlı güncelleme optimizasyonu
+- **Performans**: Timer tabanlı güncelleme optimizasyonu (100ms gecikme)
 
 ## Örnek Kullanım
 
@@ -89,6 +91,15 @@ if (sayi > 10) {
     }
 }
 return sayi;
+```
+
+## Mimari
+
+```
+SyntaxHighlighterGUI
+    ├── Lexer (Tokenization)
+    ├── Parser (Grammar Validation)
+    └── Real-time Highlighting
 ```
 
 *Bu proje, compiler design prensiplerini kullanarak geliştirilmiş eğitim amaçlı bir syntax highlighter'dır.*
