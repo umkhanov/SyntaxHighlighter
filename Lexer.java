@@ -8,13 +8,13 @@ public class Lexer {
     ));
 
     private static final Pattern pattern = Pattern.compile(
-        "\\s+|" +                              // пробелы
-        "\\b(int|if|else|while|return)\\b|" +  // ключевые слова
-        "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b|" +      // идентификаторы
-        "\\d+|" +                              // числа
-        "[=+\\-*/><!]=?|==|" +                 // операторы
-        "[(){};]"                              // символы
-    );
+        "\\s+|" +                              // boşluklar
+        "\\b(int|if|else|while|return)\\b|" +  // anahtar kelimeler
+        "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b|" +      // tanımlayıcılar
+        "\\d+|" +                              // sayılar
+        "[=+\\-*/><!]=?|==|" +                 // operatörler
+        "[(){};]"                              // semboller
+);
 
     public static List<Token> tokenize(String code) {
         List<Token> tokens = new ArrayList<>();
