@@ -2,7 +2,7 @@
 
 Gerçek zamanlı sözdizimi vurgulayıcı - C benzeri programlama dili için geliştirilmiş GUI tabanlı syntax highlighter.
 
-- **Dokümantasyon** - [Dokümantasyonu inceleyin](https://youtu.be/92CO8lLTZLs)
+- **Dokümantasyon** - [Dokümantasyonu inceleyin](Documentation.md)
 - **Demo Video** - [Uygulamanın çalışır halini izleyin](https://youtu.be/92CO8lLTZLs)
 - **Teknik Makale** - [Detaylı implementasyon açıklamaları](https://medium.com/@umhanov04/ger%C3%A7ek-zamanl%C4%B1-grammar-tabanl%C4%B1-syntax-highlighter-geli%C5%9Ftirme-s%C3%BCreci-aa4c2a301d6b)
 
